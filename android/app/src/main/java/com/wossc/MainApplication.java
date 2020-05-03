@@ -1,4 +1,4 @@
-package com.wossc;
+package com.headspin.wossc;
 
 import android.app.Application;
 import android.content.Context;

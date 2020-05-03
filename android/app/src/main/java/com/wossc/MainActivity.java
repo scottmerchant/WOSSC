@@ -1,4 +1,4 @@
-package com.wossc;
+package com.headspin.wossc;
 
 import com.facebook.react.ReactActivity;
 

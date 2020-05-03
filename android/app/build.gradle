@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.wossc"
+        applicationId "com.headspin.wossc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
