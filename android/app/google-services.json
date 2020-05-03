@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1073750364618",
+    "firebase_url": "https://wossc-72261.firebaseio.com",
+    "project_id": "wossc-72261",
+    "storage_bucket": "wossc-72261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073750364618:android:0773a81e4367a13dd4bf33",
+        "android_client_info": {
+          "package_name": "com.headspin.wossc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073750364618-gg92afro0ood5ohkod77nq967ede5k5m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.headspin.wossc",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1073750364618-4f4pnsk7tro7ff7m3tqicehq23erv961.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzFfzMzRdNRdth9HbRoGEmprYV2jP3qfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073750364618-4f4pnsk7tro7ff7m3tqicehq23erv961.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
