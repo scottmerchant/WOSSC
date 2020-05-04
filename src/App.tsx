@@ -37,15 +37,16 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <NavigationContainer>{}
+      {/* <Stack.Navigator>
     <Stack.Screen
       name="Home"
       component={Home}
       options={{title: 'Welcome'}}
     />
     <Stack.Screen name="Profile" component={Profile} />
-  </Stack.Navigator></NavigationContainer>
+  </Stack.Navigator> */}
+  </NavigationContainer>
       // <View style={styles.container}>
       //   <Text style={styles.welcome}>Welcome to React Native + Firebase!</Text>
       //   <Text style={styles.instructions}>To get started, edit App.js</Text>
