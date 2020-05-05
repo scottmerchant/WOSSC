@@ -12,8 +12,11 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import firebase from '@react-native-firebase/app';
+import Home from './scenes/home/home';
+import Login from './scenes/login/login';
+import {RootStackParamList} from './utils/types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 // TODO(you): import any additional firebase services that you require for your app, e.g for auth:
 //    1) install the npm package: `yarn add @react-native-firebase/auth@alpha` - you do not need to
@@ -32,31 +35,18 @@ const firebaseCredentials = Platform.select({
   android: 'https://invertase.link/firebase-android',
 });
 
-type Props = {};
-
-export default class App extends Component<Props> {
+export default class App extends Component<any> {
   render() {
     return (
     <NavigationContainer>{}
-      {/* <Stack.Navigator>
+            <Stack.Navigator>
     <Stack.Screen
       name="Home"
       component={Home}
-      options={{title: 'Welcome'}}
-    />
-    <Stack.Screen name="Profile" component={Profile} />
-  </Stack.Navigator> */}
+      options={{title: 'Welcome'}}/>
+      <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
   </NavigationContainer>
-      // <View style={styles.container}>
-      //   <Text style={styles.welcome}>Welcome to React Native + Firebase!</Text>
-      //   <Text style={styles.instructions}>To get started, edit App.js</Text>
-      //   <Text style={styles.instructions}>{instructions}</Text>
-      //   {!firebase.apps.length && (
-      //     <Text style={styles.instructions}>
-      //       {`\nYou currently have no Firebase apps registered, this most likely means you've not downloaded your project credentials. Visit the link below to learn more. \n\n ${firebaseCredentials}`}
-      //     </Text>
-      //   )}
-      // </View>
     );
   }
 }
