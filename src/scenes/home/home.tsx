@@ -2,6 +2,9 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { HomeScreenRouteProp, HomeScreenNavigationProp } from '../../utils/types';
+import firebase from '@react-native-firebase/app';
+import '@react-native-firebase/auth';
+
 
 type Props = {
   route: HomeScreenRouteProp;
@@ -14,11 +17,24 @@ export default class Home extends Component<Props>
   {
     return (
     <View>
-      <Text>Hello Home! {}</Text>
+      <Text>Welcome {firebase.auth().currentUser?.displayName}</Text>
       <Button
-      title="Go to Login Page"
-      onPress={() => this.props.navigation.navigate('Login')}
+      title="Sign Out"
+      onPress={() => this.logout()}
     />
     </View>);
+  }
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        console.log('user logged out');
+        this.props.navigation.replace("Login");
+      }
+   });
+  }
+
+  logout(){
+    firebase.auth().signOut();
   }
 }

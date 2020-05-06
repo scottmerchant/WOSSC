@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Home: undefined;
   Profile: { userId: string };
   Login: undefined;
+  Root: undefined;
 };
 
 export type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;

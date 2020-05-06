@@ -11,7 +11,6 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import firebase from '@react-native-firebase/app';
 import Home from './scenes/home/home';
 import Login from './scenes/login/login';
 import {RootStackParamList} from './utils/types';
