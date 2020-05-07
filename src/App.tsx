@@ -10,8 +10,8 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Home from './scenes/home/home';
+import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
+import Tabs from './scenes/tabs/tabs';
 import Login from './scenes/login/login';
 import {RootStackParamList} from './utils/types';
 
@@ -35,14 +35,18 @@ const firebaseCredentials = Platform.select({
 });
 
 export default class App extends Component<any> {
+  static navigationOptions = {
+    title: 'WOSSC Connect',
+  };
+
   render() {
     return (
-    <NavigationContainer>{}
-            <Stack.Navigator>
+    <NavigationContainer>
+    <Stack.Navigator>
     <Stack.Screen
-      name="Home"
-      component={Home}
-      options={{title: 'Welcome'}}/>
+      name="Tabs"
+      component={Tabs}
+      options={{headerShown:false}}/>
       <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
   </NavigationContainer>

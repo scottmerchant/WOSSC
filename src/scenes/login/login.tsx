@@ -22,10 +22,6 @@ export default class Login extends Component<Props>
   {
     return (
     <View>
-      <Button
-      title="Sign in Anonymously"
-      onPress={() => this.sign_in_anonymously()}
-    />
     <Text></Text>
     <Button
       title="Sign in with Google"
@@ -37,20 +33,13 @@ export default class Login extends Component<Props>
   componentDidMount(){
     auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log('user logged in ' + JSON.stringify(user))
-        this.props.navigation.replace("Home");
+        this.props.navigation.replace("Tabs");
       }
    });
   }
 
-  sign_in_anonymously(){
-    auth().signInAnonymously();
-  }
-
   async sign_in_with_google()
   {
-    console.log("sign_in_with_google");
-
     const { idToken } = await GoogleSignin.signIn();
 
     if (idToken)
