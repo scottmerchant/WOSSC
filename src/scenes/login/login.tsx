@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+// import { Text, View, Button } from 'react-native';
+import {Text, Container, Button } from 'native-base';
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../utils/types';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
@@ -21,13 +22,12 @@ export default class Login extends Component<Props>
   render()
   {
     return (
-    <View>
+    <Container>
     <Text></Text>
-    <Button
-      title="Sign in with Google"
-      onPress={() => this.sign_in_with_google()}
-    />
-    </View>);
+    <Button onPress={() => this.sign_in_with_google()}>
+      <Text>Sign in with Google</Text>
+    </Button>
+    </Container>);
   }
 
   componentDidMount(){
