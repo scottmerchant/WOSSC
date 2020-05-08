@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import {StyleSheet } from 'react-native';
 import { Button, Text, View} from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+import functions from '@react-native-firebase/functions';
+
 
 export default class More extends Component<any>
 {
@@ -25,6 +27,9 @@ export default class More extends Component<any>
   open_web_page(id:string)
   {
     console.log("open standings for " + id);
+
+    functions()
+    .httpsCallable('updateStandings')();
   }
 }
 

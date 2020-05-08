@@ -1056,7 +1056,7 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-6.7.1.tgz#93497885e6c112203db310636616647c16478da9"
   integrity sha512-jfP2wdBUaptGXO6BC0g3RYMgmGLGOkdWhkGxPhZZy1uxIxN4IXPfeUKEPL0as6ZJqfdx0IMvSvtcp7ywoFNxyg==
 
-"@react-native-firebase/app@6.7.1":
+"@react-native-firebase/app@^6.7.1":
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-6.7.1.tgz#0fe8bb9a82292d672da524763dc42e224dda4fde"
   integrity sha512-MzRlcR+5+RCU3Za+QMV064oPpZhkXvLoZbB8CdYxI66Qd2XKAGUT0FoQlFaeXZxkrfisdhLbvRUYJo1TY/Iuxg==
@@ -1069,6 +1069,11 @@
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-6.7.1.tgz#d0e59e3f4960fdab7858af7bfcf408c4379147d4"
   integrity sha512-93t4UlyylX1iUj7jSyFfE4voLk2LmBw5oDJ/BdyfAO7u9DysXE4yu3kkaq+hBlBN4tlSfS+XwWXrigCplMbfpg==
+
+"@react-native-firebase/functions@^6.8.1":
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-6.8.1.tgz#0098f1609418f76556e903fc7c96ae9ae9338558"
+  integrity sha512-F775T2Ef05UcophtCBpBm8o0U+76Zcv9x3jsqaQiG5gl3K7+0MhDp3CUUwWDI3+ldP9SKi3SMY6qogWpE7k40g==
 
 "@react-navigation/bottom-tabs@^5.3.4":
   version "5.3.4"
