@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "firebase-tools": "^8.2.0"
+    "firebase-tools": "^8.2.0",
+    "sportstg-api": "0.0.1"
   }
 }
