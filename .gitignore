@@ -56,5 +56,5 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-/ios/Pods/
-android/app/gradle/wrapper/
+WOSSC_Client/ios/Pods/
+WOSSC_Client/android/app/gradle/wrapper/
