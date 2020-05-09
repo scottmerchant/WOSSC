@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "run:android": "react-native run-android",
+    "run": "react-native run-android",
     "run:ios": "react-native run-ios --simulator=\"iPhone X\"",
-    "clean:android":"cd android && ./gradlew clean && cd ..",
+    "clean":"cd android && ./gradlew clean && cd ..",
     "clean:ios":"cd ios && xcodebuild clean && cd ..",
     "build:apk": "cd android && ./gradlew assembleRelease && cd ..",
     "test": "jest",
