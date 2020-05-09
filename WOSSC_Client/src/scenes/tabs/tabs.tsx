@@ -8,13 +8,13 @@ import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
 import Profile from '../profile/profile';
 import More from '../more/more';
-import { Icon } from 'native-base';
+import { Icon, View, Text } from 'native-base';
 import {Platform} from 'react-native';
-import 'react-native-vector-icons';
+import IosStatusBarBackground from './ios-status-bar-background';
 
 const TabsNav = createBottomTabNavigator();
 
-const os = Platform.OS;
+const isIos = Platform.OS == 'ios';
 
 type Props = {
   route: TabsScreenRouteProp;
@@ -29,32 +29,36 @@ export default class Tabs extends Component<Props>
   render()
   {
     return (
-      <TabsNav.Navigator
+      <View style={{ flex: 1 }}>
+        <IosStatusBarBackground/>
+        <TabsNav.Navigator
       screenOptions={({ route }) =>
       ({
         tabBarIcon: ({ color, size }) =>
         {
           let iconName:string;
+          let style:any = isIos ? 'Ionicons' : 'MaterialIcons';
           switch(route.name)
           {
             case 'News':
-              iconName = 'star';
+              iconName = 'newspaper';
+              style = 'MaterialCommunityIcons';
               break;
             case 'Fixtures':
-              iconName = os === 'ios' ? 'ios-list' : 'event';
+              iconName = isIos ? 'ios-list' : 'format-list-bulleted';
               break;
             case 'Profile':
-              iconName = os === 'ios' ? 'ios-contact' : 'account-circle';
+              iconName = isIos ? 'ios-contact' : 'account-circle';
               break;
             case 'Messages':
-              iconName = os === 'ios' ? 'ios-chatboxes' : 'chat';
+              iconName = isIos? 'ios-chatboxes' : 'chat';
               break;
             default:
-              iconName = os === 'ios' ? 'ios-more' : 'menu';
+              iconName = isIos ? 'ios-more' : 'menu';
               break;
           }
           // You can return any component that you like here!
-          return <Icon name={iconName} style={{fontSize: size, color:color}}/>;
+          return <Icon name={iconName} type={style} style={{fontSize: size, color:color}}/>;
         },
       })}
       tabBarOptions={{
@@ -68,6 +72,7 @@ export default class Tabs extends Component<Props>
         <TabsNav.Screen name="Messages" component={Messages}/>
         <TabsNav.Screen name="More" component={More}/>
       </TabsNav.Navigator>
+     </View>
       );
   }
 
