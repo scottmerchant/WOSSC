@@ -1,15 +1,30 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { Text, View} from 'react-native';
+import {Image, Platform} from 'react-native';
+import {Container, Header, Button, Text, Content, Icon, Input, Item} from 'native-base';
+
+const isIos = Platform.OS === 'ios';
 
 export default class News extends Component<any>
 {
+
+
   render()
   {
     return (
-    <View>
-      <Text>NEWS!</Text>
-    </View>
+      <Container>
+      <Header searchBar rounded style={{backgroundColor:'lightgrey'}}>
+          <Image source={require('../../assets/images/wossc_logo.png')} style={{ marginTop: isIos ? 0 : 5, marginRight:isIos ? 3 : 7, width: isIos ? 33 : 38, height: isIos ? 40 : 45 }}/>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" />
+          </Item>
+      </Header>
+
+      <Content>
+        <Text>NEWS</Text>
+      </Content>
+  </Container>
     );
   }
 }
