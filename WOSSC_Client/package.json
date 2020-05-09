@@ -3,9 +3,9 @@
   "version": "6.7.1",
   "private": true,
   "scripts": {
-    "start": "npx react-native start",
-    "run:android": "npx react-native run-android",
-    "run:ios": "npx react-native run-ios --simulator=\"iPhone X\"",
+    "start": "react-native start",
+    "run:android": "react-native run-android",
+    "run:ios": "react-native run-ios --simulator=\"iPhone X\"",
     "build:apk": "cd android && ./gradlew assembleRelease",
     "test": "jest",
     "prepare": "patch-package"
