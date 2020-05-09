@@ -37,12 +37,12 @@ export default class Tabs extends Component<Props>
         tabBarIcon: ({ color, size }) =>
         {
           let iconName:string;
-          let style:any = isIos ? 'Ionicons' : 'MaterialIcons';
+          let type:any = isIos ? 'Ionicons' : 'MaterialIcons';
           switch(route.name)
           {
             case 'News':
               iconName = 'newspaper';
-              style = 'MaterialCommunityIcons';
+              type = 'MaterialCommunityIcons';
               break;
             case 'Fixtures':
               iconName = isIos ? 'ios-list' : 'format-list-bulleted';
@@ -58,7 +58,7 @@ export default class Tabs extends Component<Props>
               break;
           }
           // You can return any component that you like here!
-          return <Icon name={iconName} type={style} style={{fontSize: size, color:color}}/>;
+          return <Icon name={iconName} type={type} style={{fontSize: size, color:color}}/>;
         },
       })}
       tabBarOptions={{
