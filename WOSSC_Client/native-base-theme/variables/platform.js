@@ -26,7 +26,7 @@ export default {
   accordionIconFontSize: 18,
   contentStyle: '#f5f4f5',
   expandedIconStyle: '#000',
-  headerStyle: '#edebed',
+  headerStyle: '#729c8a',
   iconStyle: '#000',
 
   // ActionSheet
@@ -133,13 +133,13 @@ export default {
   checkboxTextShadowRadius: 0,
 
   // Color
-  brandPrimary: green,
+  brandPrimary: '#005030',
   brandInfo: '#62B1F6',
-  brandSuccess: yellow,
+  brandSuccess: '#ffc00f',
   brandDanger: '#d9534f',
   brandWarning: '#f0ad4e',
-  brandDark: grey,
-  brandLight: white,
+  brandDark: '#6b9985',
+  brandLight: 'white',
 
   // Container
   containerBgColor: '#fff',
@@ -199,7 +199,7 @@ export default {
 
   // Header
   toolbarBtnColor: platform === PLATFORM.IOS ? '#007aff' : '#fff',
-  toolbarDefaultBg: grey,
+  toolbarDefaultBg: '#6b9985',
   toolbarHeight: platform === PLATFORM.IOS ? 64 : 56,
   toolbarSearchIconSize: platform === PLATFORM.IOS ? 20 : 23,
   toolbarInputColor: platform === PLATFORM.IOS ? '#CECDD2' : '#fff',
