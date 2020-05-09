@@ -8,9 +8,13 @@ import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
 import Profile from '../profile/profile';
 import More from '../more/more';
-import { Icon } from 'react-native-elements';
+import { Icon } from 'native-base';
+import {Platform} from 'react-native';
+import 'react-native-vector-icons';
 
 const TabsNav = createBottomTabNavigator();
+
+const os = Platform.OS;
 
 type Props = {
   route: TabsScreenRouteProp;
@@ -37,20 +41,20 @@ export default class Tabs extends Component<Props>
               iconName = 'star';
               break;
             case 'Fixtures':
-              iconName = 'event';
+              iconName = os === 'ios' ? 'ios-list' : 'event';
               break;
             case 'Profile':
-              iconName = 'account-circle';
+              iconName = os === 'ios' ? 'ios-contact' : 'account-circle';
               break;
             case 'Messages':
-              iconName = 'chat';
+              iconName = os === 'ios' ? 'ios-chatboxes' : 'chat';
               break;
             default:
-              iconName = 'menu'
+              iconName = os === 'ios' ? 'ios-more' : 'menu';
               break;
           }
           // You can return any component that you like here!
-          return <Icon name={iconName} size={size} color={color} />;
+          return <Icon name={iconName} style={{fontSize: size, color:color}}/>;
         },
       })}
       tabBarOptions={{
