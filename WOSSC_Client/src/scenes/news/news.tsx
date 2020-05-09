@@ -13,8 +13,8 @@ export default class News extends Component<any>
   {
     return (
       <Container>
-      <Header searchBar rounded style={{backgroundColor:'lightgrey'}}>
-          <Image source={require('../../assets/images/wossc_logo.png')} style={{ marginTop: isIos ? 0 : 5, marginRight:isIos ? 3 : 7, width: isIos ? 33 : 38, height: isIos ? 40 : 45 }}/>
+      <Header searchBar rounded style={{marginTop: isIos ? -14 : 0, backgroundColor: '#6b9985'}}>
+          <Image source={require('../../assets/images/wossc_logo.png')} style={{ marginTop: isIos ? 0 : 5, marginRight:isIos ? 3 : 7, width: isIos ? 35 : 38, height: isIos ? 40 : 45 }}/>
           <Item>
             <Icon name="ios-search" />
             <Input placeholder="Search" />
