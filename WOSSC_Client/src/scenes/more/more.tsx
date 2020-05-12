@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import {StyleSheet } from 'react-native';
-import { Button, Text, View} from 'native-base';
+import {StyleSheet, View, Text } from 'react-native';
+// import { Button, Text, View} from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 import functions from '@react-native-firebase/functions';
 
@@ -13,13 +13,13 @@ export default class More extends Component<any>
     return (
     <View style={styles.view}>
       <Text>Standings</Text>
-      <FlatList
+      {/* <FlatList
       contentContainerStyle={styles.container}
       numColumns={2}
       data={['Women','Firsts','Reserves','Thirds']}
       keyExtractor={(_, index) => index.toString()}
       renderItem={({item}) => <Button block onPress={() => this.open_web_page(item)}><Text>{item}</Text></Button>}
-      />
+      /> */}
     </View>
     );
   }

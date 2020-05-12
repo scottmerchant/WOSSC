@@ -8,8 +8,8 @@ import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
 import Profile from '../profile/profile';
 import More from '../more/more';
-import { Icon, View, Text } from 'native-base';
-import {Platform} from 'react-native';
+// import { Icon, View, Text } from 'native-base';
+import {Platform, View} from 'react-native';
 import IosStatusBarBackground from './ios-status-bar-background';
 
 const TabsNav = createBottomTabNavigator();
@@ -32,35 +32,35 @@ export default class Tabs extends Component<Props>
       <View style={{ flex: 1 }}>
         <IosStatusBarBackground/>
         <TabsNav.Navigator
-      screenOptions={({ route }) =>
-      ({
-        tabBarIcon: ({ color, size }) =>
-        {
-          let iconName:string;
-          let type:any = isIos ? 'Ionicons' : 'MaterialIcons';
-          switch(route.name)
-          {
-            case 'News':
-              iconName = 'newspaper';
-              type = 'MaterialCommunityIcons';
-              break;
-            case 'Fixtures':
-              iconName = isIos ? 'ios-list' : 'format-list-bulleted';
-              break;
-            case 'Profile':
-              iconName = isIos ? 'ios-contact' : 'account-circle';
-              break;
-            case 'Messages':
-              iconName = isIos? 'ios-chatboxes' : 'chat';
-              break;
-            default:
-              iconName = isIos ? 'ios-more' : 'menu';
-              break;
-          }
-          // You can return any component that you like here!
-          return <Icon name={iconName} type={type} style={{fontSize: size, color:color}}/>;
-        },
-      })}
+      // screenOptions={({ route }) =>
+      // ({
+      //   tabBarIcon: ({ color, size }) =>
+      //   {
+      //     let iconName:string;
+      //     let type:any = isIos ? 'Ionicons' : 'MaterialIcons';
+      //     switch(route.name)
+      //     {
+      //       case 'News':
+      //         iconName = 'newspaper';
+      //         type = 'MaterialCommunityIcons';
+      //         break;
+      //       case 'Fixtures':
+      //         iconName = isIos ? 'ios-list' : 'format-list-bulleted';
+      //         break;
+      //       case 'Profile':
+      //         iconName = isIos ? 'ios-contact' : 'account-circle';
+      //         break;
+      //       case 'Messages':
+      //         iconName = isIos? 'ios-chatboxes' : 'chat';
+      //         break;
+      //       default:
+      //         iconName = isIos ? 'ios-more' : 'menu';
+      //         break;
+      //     }
+      //     // You can return any component that you like here!
+      //     return <Icon name={iconName} type={type} style={{fontSize: size, color:color}}/>;
+      //   },
+      // })}
       tabBarOptions={{
         activeTintColor: 'green',
         inactiveTintColor: 'gray',
