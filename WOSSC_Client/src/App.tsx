@@ -10,11 +10,11 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 // import { StyleProvider } from 'native-base';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 import Tabs from './scenes/tabs/tabs';
 import Login from './scenes/login/login';
-import {RootStackParamList} from './utils/types';
+import { RootStackParamList } from './utils/types';
 // import getTheme from '../native-base-theme/components';
 // import platform from '../native-base-theme/variables/platform';
 
@@ -45,16 +45,19 @@ export default class App extends Component<any> {
   render() {
     return (
       // <StyleProvider style={getTheme(platform)}>
-    <NavigationContainer>
-    <Stack.Navigator>
-    <Stack.Screen
-      name="Tabs"
-      component={Tabs}
-      options={{headerShown:false}}/>
-      <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator>
-  </NavigationContainer>
-  // </StyleProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Tabs"
+            component={Tabs}
+            options={{ headerShown: false }} />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      // </StyleProvider>
     );
   }
 }

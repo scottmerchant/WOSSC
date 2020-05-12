@@ -1,11 +1,12 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { View, Image, Platform } from 'react-native';
 // import {Text, Container, Button } from 'native-base';
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../utils/types';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import google_services from '../../../android/app/google-services.json';
+import {Appbar, Button } from 'react-native-paper';
 
 GoogleSignin.configure({
   webClientId: google_services.client[0].oauth_client[2].client_id,
@@ -17,12 +18,24 @@ type Props = {
   navigation: LoginScreenNavigationProp;
 };
 
+const isIos = Platform.OS === 'ios';
+
 export default class Login extends Component<Props>
 {
   render() {
     return (
       <View>
-        <Button title="Sign in with Google" onPress={() => this.sign_in_with_google()} />
+        <Appbar.Header>
+          <Image
+          source={require('../../assets/images/wossc_logo.png')}
+          style={{
+            marginTop: isIos ? 0 : 5,
+            marginRight:isIos ? 3 : 0,
+            width: isIos ? 35 : 38,
+            height: isIos ? 40 : 45 }}/>
+          <Appbar.Content title="WOSSC Connect" subtitle="please sign in"/>
+        </Appbar.Header>
+        <Button onPress={() => this.sign_in_with_google()} >Sign in with Google</Button>
       </View>);
   }
 
