@@ -1,9 +1,8 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import {StyleSheet, View, Text } from 'react-native';
-// import { Button, Text, View} from 'native-base';
-import { FlatList } from 'react-native-gesture-handler';
-import functions from '@react-native-firebase/functions';
+import { View } from 'react-native';
+import { Text } from 'react-native-paper';
+import ActionBar from '../../components/organisms/ActionBar';
 
 
 export default class More extends Component<any>
@@ -11,7 +10,8 @@ export default class More extends Component<any>
   render()
   {
     return (
-    <View style={styles.view}>
+    <View>
+      <ActionBar title="More"/>
       <Text>Standings</Text>
       {/* <FlatList
       contentContainerStyle={styles.container}
@@ -27,23 +27,5 @@ export default class More extends Component<any>
   open_web_page(id:string)
   {
     console.log("open standings for " + id);
-
-    functions()
-    .httpsCallable('updateStandings')();
   }
 }
-
-var styles = StyleSheet.create({
-  view:{
-    alignItems: "center"
-  },
-  item: {
-    width: 150,
-    margin: 5
-  },
-  container:{
-    alignItems: "center",
-    marginTop: 20,
-    marginBottom: 10
-  }
-});

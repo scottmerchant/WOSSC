@@ -1,15 +1,17 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { Text, View} from 'react-native';
+import { View } from 'react-native';
+import { Text } from 'react-native-paper';
+import ActionBar from '../../components/organisms/ActionBar';
 
 export default class Fixtures extends Component<any>
 {
-  render()
-  {
+  render() {
     return (
-    <View>
-      <Text>FIXTURES!</Text>
-    </View>
+      <View>
+        <ActionBar title="Fixtures" />
+        <Text>FIXTURES!</Text>
+      </View>
     );
   }
 }

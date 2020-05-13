@@ -4,9 +4,11 @@ import { View, Image, Platform } from 'react-native';
 // import {Text, Container, Button } from 'native-base';
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../utils/types';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import firebase from '@react-native-firebase/app';
+import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
 import google_services from '../../../android/app/google-services.json';
-import {Appbar, Button } from 'react-native-paper';
+import {Button, Text } from 'react-native-paper';
+import ActionBar from '../../components/organisms/ActionBar';
 
 GoogleSignin.configure({
   webClientId: google_services.client[0].oauth_client[2].client_id,
@@ -18,24 +20,23 @@ type Props = {
   navigation: LoginScreenNavigationProp;
 };
 
-const isIos = Platform.OS === 'ios';
+type State = {
+  isSigninInProgress: boolean;
+}
 
-export default class Login extends Component<Props>
+export default class Login extends Component<Props, State>
 {
+  constructor(props:Props){
+    super(props);
+
+    this.state = {isSigninInProgress: false}
+  }
+
   render() {
     return (
       <View>
-        <Appbar.Header>
-          <Image
-          source={require('../../assets/images/wossc_logo.png')}
-          style={{
-            marginTop: isIos ? 0 : 5,
-            marginRight:isIos ? 3 : 0,
-            width: isIos ? 35 : 38,
-            height: isIos ? 40 : 45 }}/>
-          <Appbar.Content title="WOSSC Connect" subtitle="please sign in"/>
-        </Appbar.Header>
-        <Button onPress={() => this.sign_in_with_google()} >Sign in with Google</Button>
+        <ActionBar title="WOSSC Connect" subtitle="please sign in"/>
+        <GoogleSigninButton onPress={async () => await this.sign_in_with_google()} disabled={this.state.isSigninInProgress} />
       </View>);
   }
 
@@ -51,10 +52,7 @@ export default class Login extends Component<Props>
     const { idToken } = await GoogleSignin.signIn();
 
     if (idToken) {
-      // Create a Google credential with the token
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      // Sign-in the user with the credential
-      return auth().signInWithCredential(googleCredential);
+      await (firebase as any).login({credential: firebase.auth.GoogleAuthProvider.credential(idToken)});
     }
   }
 }

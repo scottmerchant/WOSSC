@@ -1,6 +1,8 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { Text, View} from 'react-native';
+import { View} from 'react-native';
+import { Text } from 'react-native-paper';
+import ActionBar from '../../components/organisms/ActionBar';
 
 export default class Messages extends Component<any>
 {
@@ -8,6 +10,7 @@ export default class Messages extends Component<any>
   {
     return (
     <View>
+      <ActionBar title="Messages"/>
       <Text>MESSAGES!</Text>
     </View>
     );

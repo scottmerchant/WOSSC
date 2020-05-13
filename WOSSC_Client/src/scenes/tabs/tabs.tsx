@@ -8,18 +8,38 @@ import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
 import Profile from '../profile/profile';
 import More from '../more/more';
-// import { Icon, View, Text } from 'native-base';
-import {Platform, View} from 'react-native';
+import { Platform, View } from 'react-native';
 import IosStatusBarBackground from './ios-status-bar-background';
-import {BottomNavigation} from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
 const TabsNav = createBottomTabNavigator();
 
 const isIos = Platform.OS == 'ios';
 
+let iconType: any = isIos ? 'Ionicons' : 'MaterialIcons';
+
+const getMaterialIcon = (name: string) => {
+  return (props: any) =>
+    <MaterialIcon name={name} {...props} />;
+}
+
+const getMaterialCommunityIcon = (name: string) => {
+  return (props: any) =>
+    <MaterialCommunityIcon name={name} {...props} />;
+}
+
+const getIonIcon = (name: string) => {
+  return (props: any) =>
+    <IonIcon name={name} {...props} />;
+}
+
 type Props = {
   route: TabsScreenRouteProp;
   navigation: TabsScreenNavigationProp;
+  state: any;
 };
 
 export default class Tabs extends Component<Props>
@@ -27,15 +47,15 @@ export default class Tabs extends Component<Props>
   state = {
     index: 0,
     routes: [
-      { key: 'news', title: 'News', icon: 'newspaper' },
-      { key: 'fixtures', title: 'Fixtures', icon: 'format-list-bulleted' },
-      { key: 'profile', title: 'Profile', icon: 'account-circle' },
-      { key: 'messages', title: 'Messages', icon: 'chat' },
-      { key: 'more', title: 'More', icon: 'menu' },
+      { key: 'news', title: 'News', icon: getMaterialCommunityIcon('newspaper') },
+      { key: 'fixtures', title: 'Fixtures', icon: isIos ? getIonIcon('ios-list') : getMaterialIcon('format-list-bulleted') },
+      { key: 'profile', title: 'Profile', icon: isIos ? getIonIcon('ios-contact') : getMaterialIcon('account-circle') },
+      { key: 'messages', title: 'Messages', icon: isIos ? getIonIcon('ios-chatboxes') : getMaterialIcon('chat') },
+      { key: 'more', title: 'More', icon: isIos ? getIonIcon('ios-more') : getMaterialIcon('menu') },
     ],
   };
 
-  _handleIndexChange = (index:number) => this.setState({ index });
+  _handleIndexChange = (index: number) => this.setState({ index });
 
   _renderScene = BottomNavigation.SceneMap({
     news: News,
@@ -48,74 +68,22 @@ export default class Tabs extends Component<Props>
   render() {
     return (
       <View style={{ flex: 1 }}>
-      <IosStatusBarBackground/>
-      <BottomNavigation
-        navigationState={this.state}
-        onIndexChange={this._handleIndexChange}
-        renderScene={this._renderScene}
-      />
+        <IosStatusBarBackground />
+        <BottomNavigation
+          shifting={false}
+          navigationState={this.state}
+          onIndexChange={this._handleIndexChange}
+          renderScene={this._renderScene}
+        />
       </View>
     );
   }
 
-  // static navigationOptions = {
-  //   title: 'WOSSC Connect',
-  // };
-  // render()
-  // {
-  //   return (
-  //     <View style={{ flex: 1 }}>
-  //       <IosStatusBarBackground/>
-  //       <TabsNav.Navigator
-  //     // screenOptions={({ route }) =>
-  //     // ({
-  //     //   tabBarIcon: ({ color, size }) =>
-  //     //   {
-  //     //     let iconName:string;
-  //     //     let type:any = isIos ? 'Ionicons' : 'MaterialIcons';
-  //     //     switch(route.name)
-  //     //     {
-  //     //       case 'News':
-  //     //         iconName = 'newspaper';
-  //     //         type = 'MaterialCommunityIcons';
-  //     //         break;
-  //     //       case 'Fixtures':
-  //     //         iconName = isIos ? 'ios-list' : 'format-list-bulleted';
-  //     //         break;
-  //     //       case 'Profile':
-  //     //         iconName = isIos ? 'ios-contact' : 'account-circle';
-  //     //         break;
-  //     //       case 'Messages':
-  //     //         iconName = isIos? 'ios-chatboxes' : 'chat';
-  //     //         break;
-  //     //       default:
-  //     //         iconName = isIos ? 'ios-more' : 'menu';
-  //     //         break;
-  //     //     }
-  //     //     // You can return any component that you like here!
-  //     //     return <Icon name={iconName} type={type} style={{fontSize: size, color:color}}/>;
-  //     //   },
-  //     // })}
-  //     tabBarOptions={{
-  //       activeTintColor: 'green',
-  //       inactiveTintColor: 'gray',
-  //     }}
-  //     >
-  //       <TabsNav.Screen name="News" component={News}/>
-  //       <TabsNav.Screen name="Fixtures" component={Fixtures}/>
-  //       <TabsNav.Screen name="Profile" component={Profile}/>
-  //       <TabsNav.Screen name="Messages" component={Messages}/>
-  //       <TabsNav.Screen name="More" component={More}/>
-  //     </TabsNav.Navigator>
-  //    </View>
-  //     );
-  // }
-
-  componentDidMount(){
+  componentDidMount() {
     auth().onAuthStateChanged((user) => {
       if (!user) {
         this.props.navigation.replace("Login");
       }
-   });
+    });
   }
 }

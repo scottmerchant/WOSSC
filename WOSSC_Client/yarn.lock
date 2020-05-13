@@ -1078,6 +1078,16 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-6.7.1.tgz#d0e59e3f4960fdab7858af7bfcf408c4379147d4"
   integrity sha512-93t4UlyylX1iUj7jSyFfE4voLk2LmBw5oDJ/BdyfAO7u9DysXE4yu3kkaq+hBlBN4tlSfS+XwWXrigCplMbfpg==
 
+"@react-native-firebase/database@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-7.0.0.tgz#09172bcc158a58d651e246a695aaef00de091dc2"
+  integrity sha512-q2hcVnHl4t9+qEhAFay+8EalC++f0Kg8mrBAaIpG7UzamxS7Uj/YShOQUogQe/HbbRH9fvj5OR57Ps2IArSPKw==
+
+"@react-native-firebase/firestore@^6.7.1":
+  version "6.7.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-6.7.1.tgz#f0ccf73b51d73b31e7c9b8896979fa9a129583e3"
+  integrity sha512-hODzL694Ar/ao8EAW6QNbYJsqJXyaV7Qzku7TlJop2kIIs+UVzTcSGfnkfrTSJ2wW0ka6sM45asxmfuLkyz0eA==
+
 "@react-native-firebase/functions@^6.8.1":
   version "6.8.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-6.8.1.tgz#0098f1609418f76556e903fc7c96ae9ae9338558"
@@ -1173,6 +1183,14 @@
   resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.36.tgz#17ce0a235e9ffbcdcdf5095646b374c2bf615a4c"
   integrity sha512-7TUK/k2/QGpEAv/BCwSHlYu3NXZhQ9ZwBYpzr9tjlPIL2C5BeGhH3DmVavRx3ZNyELX5TLC91JTz/cen6AAtIQ==
 
+"@types/hoist-non-react-statics@^3.3.0":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -1217,6 +1235,16 @@
   integrity sha512-FGFEt9GcFVl//XxWmxkeBxAx0YnzyEhJpR8hOJrjfaFKZm0KjHzzyCmCksBAP2qHSTrcJCiBkIvYCX/kGiOgww==
   dependencies:
     "@types/react" "*"
+
+"@types/react-redux@^7.1.8":
+  version "7.1.8"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.8.tgz#3631feb559f7858d6ad9eea1d6ef41fa64fe7205"
+  integrity sha512-kpplH7Wg2SYU00sZVT98WBN0ou6QKrYcShRaW+5Vpe5l7bluKWJbWmAL+ieiso07OQzpcP5i1PeY3690640ZWg==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react@*", "@types/react@^16.9.34":
   version "16.9.34"
@@ -3523,6 +3551,11 @@ image-size@^0.6.0:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.6.3.tgz#e7e5c65bb534bd7cdcedd6cb5166272a85f75fb2"
   integrity sha512-47xSUiQioGaB96nqtp5/q55m0aBQSQdyIloMOc/x+QVTDZLNmXE892IIDrJ0hM1A5vcNUDD5tDffkSP5lCaIIA==
+
+immer@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-5.0.0.tgz#07f462b7d95f7e86c214a861ecacd766d42b8c0a"
+  integrity sha512-G7gRqKbi9NE025XVyqyTV98dxUOtdKvu/P1QRaVZfA55aEcXgjbxPdm+TlWdcSMNPKijlaHNz61DGPyelouRlA==
 
 import-fresh@^2.0.0:
   version "2.0.0"
@@ -6263,7 +6296,21 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-redux@^4.0.5:
+reduce-reducers@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/reduce-reducers/-/reduce-reducers-1.0.4.tgz#fb77e751a9eb0201760ac5a605ca8c9c2d0537f8"
+  integrity sha512-Mb2WZ2bJF597exiqX7owBzrqJ74DHLK3yOQjCyPAaNifRncE8OD0wFIuoMhXxTnHK07+8zZ2SJEKy/qtiyR7vw==
+
+redux-firestore@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/redux-firestore/-/redux-firestore-0.13.0.tgz#154e705726740c6173e2f8a1d82214aeccc6954f"
+  integrity sha512-0Vf/MXrH6gUqVwSmAQAz9Ic1J4uADCaF29DcpcNU2ecZoYG5aQSZO2iGXUqzjAOeatE1Ksz8SDEvKu8gBRvYXg==
+  dependencies:
+    immer "5.0.0"
+    lodash "^4.17.15"
+    reduce-reducers "^1.0.4"
+
+redux@^4.0.0, redux@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
   integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
