@@ -1,13 +1,11 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { View, Image, Platform } from 'react-native';
-// import {Text, Container, Button } from 'native-base';
+import { View, StyleSheet } from 'react-native';
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../utils/types';
 import auth from '@react-native-firebase/auth';
 import firebase from '@react-native-firebase/app';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
 import google_services from '../../../android/app/google-services.json';
-import {Button, Text } from 'react-native-paper';
 import ActionBar from '../../components/organisms/ActionBar';
 
 GoogleSignin.configure({
@@ -26,17 +24,22 @@ type State = {
 
 export default class Login extends Component<Props, State>
 {
-  constructor(props:Props){
+  constructor(props: Props) {
     super(props);
 
-    this.state = {isSigninInProgress: false}
+    this.state = { isSigninInProgress: false }
   }
 
   render() {
     return (
       <View>
         <ActionBar title="WOSSC Connect" subtitle="please sign in"/>
-        <GoogleSigninButton onPress={async () => await this.sign_in_with_google()} disabled={this.state.isSigninInProgress} />
+        <View style={styles.buttonCentreAlign}>
+          <GoogleSigninButton
+            onPress={async () => await this.sign_in_with_google()}
+            disabled={this.state.isSigninInProgress}
+            style={{margin:20, width:150}}/>
+        </View>
       </View>);
   }
 
@@ -52,7 +55,14 @@ export default class Login extends Component<Props, State>
     const { idToken } = await GoogleSignin.signIn();
 
     if (idToken) {
-      await (firebase as any).login({credential: firebase.auth.GoogleAuthProvider.credential(idToken)});
+      await (firebase as any).login({ credential: firebase.auth.GoogleAuthProvider.credential(idToken) });
     }
   }
 }
+
+const styles = StyleSheet.create({
+  buttonCentreAlign: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
