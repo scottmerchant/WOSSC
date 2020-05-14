@@ -7,12 +7,11 @@ import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
 import Profile from '../profile/profile';
 import More from '../more/more';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import IosStatusBarBackground from './ios-status-bar-background';
 import { BottomNavigation } from 'react-native-paper';
 import {getIonIcon, getMaterialCommunityIcon, getMaterialIcon} from '../../utils/Icons';
-
-const isIos = Platform.OS == 'ios';
+import IsIos from '../../utils/IsIos';
 
 type Props = {
   route: TabsScreenRouteProp;
@@ -28,10 +27,10 @@ export default class Tabs extends Component<Props>
     index: 0,
     routes: [
       { key: 'news', title: 'News', icon: getMaterialCommunityIcon('newspaper') },
-      { key: 'fixtures', title: 'Fixtures', icon: isIos ? getIonIcon('ios-list') : getMaterialIcon('format-list-bulleted') },
-      { key: 'profile', title: 'Profile', icon: isIos ? getIonIcon('ios-contact') : getMaterialIcon('account-circle') },
-      { key: 'messages', title: 'Messages', icon: isIos ? getIonIcon('ios-chatboxes') : getMaterialIcon('chat') },
-      { key: 'more', title: 'More', icon: isIos ? getIonIcon('ios-more') : getMaterialIcon('menu') },
+      { key: 'fixtures', title: 'Fixtures', icon: IsIos ? getIonIcon('ios-list') : getMaterialIcon('format-list-bulleted') },
+      { key: 'profile', title: 'Profile', icon: IsIos ? getIonIcon('ios-contact') : getMaterialIcon('account-circle') },
+      { key: 'messages', title: 'Messages', icon: IsIos ? getIonIcon('ios-chatboxes') : getMaterialIcon('chat') },
+      { key: 'more', title: 'More', icon: IsIos ? getIonIcon('ios-more') : getMaterialIcon('menu') },
     ],
   };
 
