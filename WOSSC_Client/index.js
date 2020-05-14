@@ -2,39 +2,12 @@ import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
 import React, { Component } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
-import RNFirebase from '@react-native-firebase/app';
-import { createStore, combineReducers } from 'redux'
-import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase';
-import firestore from '@react-native-firebase/firestore';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import '@react-native-firebase/database';
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore';
 import App from './src/App';
+import generateStore from './src/utils/store';
 
-// react-redux-firebase config
-const rrfConfig = {
-  userProfile: 'users',
-  useFirestoreForProfile: true
-}
-
-// // Initialize other services on firebase instance
-firestore();
-
-// // Add firebase to reducers
-const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer
-})
-
-// // Create store with reducers and initial state
-const initialState = { firebase: {}, firestore: {users:[]} }
-const store = createStore(rootReducer, initialState)
-
-const rrfProps = {
-  firebase: RNFirebase,
-  config: rrfConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance
-}
+const {store, rrfProps} = generateStore();
 
 class Main extends Component {
   render() {

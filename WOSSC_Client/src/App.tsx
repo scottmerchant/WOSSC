@@ -8,13 +8,6 @@ import { RootStackParamList } from './utils/types';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { getCurrentTheme } from './styles/theme';
 import { connect } from 'react-redux';
-import { State } from 'react-native-gesture-handler';
-import { compose } from 'redux';
-import { isLoaded, isEmpty, firestoreConnect } from 'react-redux-firebase';
-
-// const enhance = compose(
-//   firestoreConnect([{path: 'users'}])
-// )
 
 const Stack = createStackNavigator<RootStackParamList>();
 

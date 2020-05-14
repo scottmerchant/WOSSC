@@ -1,23 +1,38 @@
-import { createStore, compose } from 'redux'
-import firebase from '@react-native-firebase/app'
-import '@react-native-firebase/auth'
-import '@react-native-firebase/database'
-import { firestore } from '@react-native-firebase/firestore'
-import { reactReduxFirebase } from 'react-redux-firebase'
-import rootReducer from './reducer'
+import RNFirebase from '@react-native-firebase/app';
+import { createStore, combineReducers } from 'redux'
+import { firebaseReducer } from 'react-redux-firebase';
+import firestore from '@react-native-firebase/firestore';
+import '@react-native-firebase/database';
+import { createFirestoreInstance, firestoreReducer } from 'redux-firestore';
 
-export default function configureStore(initialState, history) {
+const generateStore = () => {
+  // react-redux-firebase config
+  const rrfConfig = {
+    userProfile: 'users',
+    useFirestoreForProfile: true
+  }
+
+  // // Initialize other services on firebase instance
   firestore();
 
-  const createStoreWithMiddleware = compose(
-    reactReduxFirebase(firebase, {
-      userProfile: 'users',
-      useFirestoreForProfile: true,
-      enableLogging: false
-    })
-  )(createStore)
+  // // Add firebase to reducers
+  const rootReducer = combineReducers({
+    firebase: firebaseReducer,
+    firestore: firestoreReducer
+  })
 
-  const store = createStoreWithMiddleware(rootReducer)
+  // // Create store with reducers and initial state
+  const initialState = { firebase: {}, firestore: { users: [] } }
+  const store = createStore(rootReducer, initialState)
 
-  return store
+  const rrfProps = {
+    firebase: RNFirebase,
+    config: rrfConfig,
+    dispatch: store.dispatch,
+    createFirestoreInstance
+  }
+
+  return { store, rrfProps };
 }
+
+export default generateStore;

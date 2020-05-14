@@ -2,7 +2,6 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { TabsScreenRouteProp, TabsScreenNavigationProp } from '../../utils/types';
 import auth from '@react-native-firebase/auth';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import News from '../news/news';
 import Fixtures from '../fixtures/fixtures';
 import Messages from '../messages/messages';
@@ -11,30 +10,9 @@ import More from '../more/more';
 import { Platform, View } from 'react-native';
 import IosStatusBarBackground from './ios-status-bar-background';
 import { BottomNavigation } from 'react-native-paper';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-
-const TabsNav = createBottomTabNavigator();
+import {getIonIcon, getMaterialCommunityIcon, getMaterialIcon} from '../../utils/Icons';
 
 const isIos = Platform.OS == 'ios';
-
-let iconType: any = isIos ? 'Ionicons' : 'MaterialIcons';
-
-const getMaterialIcon = (name: string) => {
-  return (props: any) =>
-    <MaterialIcon name={name} {...props} />;
-}
-
-const getMaterialCommunityIcon = (name: string) => {
-  return (props: any) =>
-    <MaterialCommunityIcon name={name} {...props} />;
-}
-
-const getIonIcon = (name: string) => {
-  return (props: any) =>
-    <IonIcon name={name} {...props} />;
-}
 
 type Props = {
   route: TabsScreenRouteProp;
@@ -44,6 +22,8 @@ type Props = {
 
 export default class Tabs extends Component<Props>
 {
+  disposeAuthStateChanged : () => void = () => {};
+
   state = {
     index: 0,
     routes: [
@@ -80,10 +60,14 @@ export default class Tabs extends Component<Props>
   }
 
   componentDidMount() {
-    auth().onAuthStateChanged((user) => {
+    this.disposeAuthStateChanged = auth().onAuthStateChanged((user) => {
       if (!user) {
-        this.props.navigation.replace("Login");
+        this.props.navigation.replace('Login');
       }
     });
+  }
+
+  componentWillUnmount() {
+    this.disposeAuthStateChanged();
   }
 }
